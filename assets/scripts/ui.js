@@ -1,7 +1,7 @@
 'use strict'
 
 const store = require('./store.js')
-const magic = require('./magic.js')
+// const magic = require('./magic.js')
 
 // const signUpSuccess = data => {
 //   $('#message').text('Signed up successfully')
@@ -128,14 +128,14 @@ const updatePostSuccess = data => {
 $('#sign-out')[0].reset()
 }
   // $('#sign-out')[0].reset()
-}
+
 
 const updatePostFailure = error => {
   toastr.error('Failure', 'Sign out failed')
   $('#sign-out')[0].reset()
 }
-  // $('#sign-out')[0].empty()
-}
+// $('#sign-out')[0].empty()
+
 
 
 module.exports = {

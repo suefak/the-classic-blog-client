@@ -32,8 +32,9 @@ const signedOut = () => {
   $('.settingsp').hide()
 }
 module.exports = {
-    authForms,
-    mainForms,
-    settingShow,
-    signedIn,
-    signedOut
+  authForms,
+  mainForms,
+  settingShow,
+  signedIn,
+  signedOut
+}
