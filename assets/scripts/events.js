@@ -120,9 +120,6 @@ const onDeletePost = event => {
     .then(ui.deletePostSuccess)
     .catch(ui.deletePostFailure)
 }
-
-
-
 module.exports = {
   onSignUp,
   onSignIn,

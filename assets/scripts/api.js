@@ -80,10 +80,6 @@ const editPost = function (data) {
   })
 }
 
-
-
-
-
 module.exports = {
   signUp,
   signIn,
