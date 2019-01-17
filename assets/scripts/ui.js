@@ -31,11 +31,6 @@ const signInSuccess = data => {
   siteFunc.mainForms()
   siteFunc.signedIn()
   $('.site__content').hide()
-  if (store.user.owner === true) {
-    $('#adminActions').show()
-  } else {
-    $('#userActions').show()
-  }
 }
 
 const signInFailure = error => {
@@ -44,61 +39,64 @@ const signInFailure = error => {
 }
 // End Sign in//
 
-const changePasswordSuccess = data => {
-  $('#message').text('Password changed successfully')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-  console.log('changePasswordSuccess ran. Data is :', data)
-  $('#change-password')[0].reset()
-}
-
-const changePasswordFailure = error => {
-  $('#message').text('Error on password change')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  console.error('changePasswordFailure ran. Error is :', error)
-  $('#change-password')[0].reset()
-}
-
+// Sign out //
 const signOutSuccess = data => {
-  $('#message').text('Signed out successfully')
-  store.user = null
-  magic.signOutDone()
-  $('#message').removeClass()
-  $('#message').addClass('success')
-  console.log('signOutSuccess ran. Data is :', data)
+  $('#sign-out')[0].reset()
+  $('.allForms').hide()
+  $('#userActions').hide()
+  siteFunc.mainForms()
+  siteFunc.signedOut()
+  toastr.success('Success', 'Signed out')
+  $('.site__content').show()
+}
+const signOutFailure = error => {
+  toastr.error('Failure', 'Sign out failed')
   $('#sign-out')[0].reset()
 }
 
-const signOutFailure = error => {
-  $('#message').text('Error on sign out')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  console.error('signOutFailure ran. Error is :', error)
-  $('#sign-out')[0].empty()
+// Change pass //
+const changePasswordSuccess = data => {
+  toastr.success('Success', 'Password changed')
+  $('#changePassword')[0].reset()
 }
 
-const CreateSuccess = data => {
-  $('#message').text('created to do list successfully')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-  console.log('signUpSuccess ran. Data is :', data)
-  $('#sign-up')[0].reset()
 
-$('#signupemail').val('')
-$('#signuppassword').val('')
-$('#signuppasswordconfirm').val('')
+
+const changePasswordFailure = error => {
+  toastr.error('Failure', 'Password change failed')
+  $('#changePassword')[0].reset()
 }
 
-const CreateFailure = error => {
-  $('#message').text('Error on sign up')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  console.error('createFailure ran. Error is :', error)
-  // $('#sign-up')[0].reset()
+const createPostSuccess = data => {
+  toastr.success('Success', 'Post added')
+  $('#createPost')[0].reset()
 }
 
-const IndexSuccess = data => {
+const createPostFailure = error => {
+  toastr.error('Failure', 'Post create failed')
+  $('#createPost')[0].reset()
+}
+
+const editPostSuccess = data => {
+  toastr.success('Success', 'Restaurant editted')
+  $('#editRestaurant')[0].reset()
+}
+
+const editPostFailure = error => {
+  toastr.error('Failure', 'Post edit failed')
+  $('#editPost')[0].reset()
+}
+
+const deletePostSuccess = data => {
+  toastr.success('Success', 'Post deleted')
+  $('#deletePost')[0].reset()
+}
+const deletePostFailure = data => {
+  toastr.error('Failure', 'Post delete fail')
+  $('#deletePost')[0].reset()
+}
+
+const indexPostSuccess = data => {
   // store.user = data.user
   $('#message').text('Index successfully')
   $('#message').removeClass()
@@ -118,43 +116,24 @@ const IndexSuccess = data => {
   // $('#sign-in')[0].reset()
 }
 
-const IndexFailure = error => {
-  $('#message').text('Error on sign in')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  console.error('IndexFailure ran. Error is :', error)
-  // $('#sign-in')[0].reset()
+const indexPostFailure = error => {
+  toastr.error('Failure', 'Sign out failed')
+  $('#sign-out')[0].reset()
 }
+// $('#sign-in')[0].reset()
 
-const DeleteSuccess = data => {
-  $('#message').text('Deleted successfully')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-  console.log('Delete Success ran. Data is :', data)
-  // $('#change-password')[0].reset()
+
+const updatePostSuccess = data => {
+  toastr.error('Failure', 'Sign out failed')
+$('#sign-out')[0].reset()
 }
-
-const DeleteFailure = error => {
-  $('#message').text('Error on Delete')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  console.error('deleteFailure ran. Error is :', error)
-  // $('#change-password')[0].reset()
-}
-
-const UpdateSuccess = data => {
-  $('#message').text('Updated successfully')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-  console.log('updateSuccess ran. Data is :', data)
   // $('#sign-out')[0].reset()
 }
 
-const UpdateFailure = error => {
-  $('#message').text('Error on update')
-  $('#message').removeClass()
-  $('#message').addClass('failure')
-  console.error('updateFailure ran. Error is :', error)
+const updatePostFailure = error => {
+  toastr.error('Failure', 'Sign out failed')
+  $('#sign-out')[0].reset()
+}
   // $('#sign-out')[0].empty()
 }
 
@@ -163,17 +142,16 @@ module.exports = {
   signUpSuccess,
   signUpFailure,
   signInSuccess,
-  signInFailure,
   signOutSuccess,
   signOutFailure,
   changePasswordSuccess,
   changePasswordFailure,
-  CreateSuccess,
-  CreateFailure,
-  IndexSuccess,
-  IndexFailure,
-  DeleteSuccess,
-  DeleteFailure,
-  UpdateSuccess,
-  UpdateFailure
+  createPostSuccess,
+  createPostFailure,
+  indexPostSuccess,
+  indexPostFailure,
+  deletePostSuccess,
+  deletePostFailure,
+  updatePostSuccess,
+  updatePostFailure
 }
