@@ -43,11 +43,9 @@ const onSignOut = event => {
 
 const showFormFields = () => {
 
-  $('.allForms').show();
 }
 
 
-// USER SHOW FORM FIELDS
 const showFormCreate = () => {
   $('.allForms').show();
   $('.createPost').show()
@@ -64,7 +62,7 @@ const showFormShow = (event) => {
   $('.deletePost').hide()
   $('.editPost').hide()
   $('.showPost').hide()
-  onShowRating(event)
+  onShowPost(event)
 }
 
 const showFormDelete = () => {
